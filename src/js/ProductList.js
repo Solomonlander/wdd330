@@ -23,34 +23,21 @@ export default class ProductList {
 
                 `<li>
 
-        <a href="/src/product_details/index.html?id=${product.Id}">
+          <a href="../product_details/index.html?id=${product.Id}">
 
-          <h3>${product.Name}</h3>
+            <h3>${product.Name}</h3>
 
-          <img
+            <img
+              src="${product.Images.PrimaryMedium}"
+              alt="${product.Name}"
+            />
 
-          src="${product.Images.PrimaryMedium}"
+          </a>
 
-          srcset="
-          ${product.Images.PrimarySmall} 400w,
-          ${product.Images.PrimaryMedium} 800w,
-          ${product.Images.PrimaryLarge} 1200w
-          "
-
-          sizes="
-          (max-width:600px) 400px,
-          (max-width:900px) 800px,
-          1200px
-          "
-
-          alt="${product.Name}"
-          >
-
-        </a>
-
-      </li>`
+        </li>`
 
             ).join("");
 
     }
+
 }
