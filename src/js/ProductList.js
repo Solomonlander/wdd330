@@ -28,9 +28,23 @@ export default class ProductList {
           <h3>${product.Name}</h3>
 
           <img
+
           src="${product.Images.PrimaryMedium}"
+
+          srcset="
+          ${product.Images.PrimarySmall} 400w,
+          ${product.Images.PrimaryMedium} 800w,
+          ${product.Images.PrimaryLarge} 1200w
+          "
+
+          sizes="
+          (max-width:600px) 400px,
+          (max-width:900px) 800px,
+          1200px
+          "
+
           alt="${product.Name}"
-          />
+          >
 
         </a>
 
