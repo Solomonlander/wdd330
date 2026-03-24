@@ -14,8 +14,8 @@ const category =
 
 
 const title =
-    document.querySelector("h2");
-
+    document.querySelector(".title");
+    
 title.textContent =
     "Top Products: " + category;
 
