@@ -1,0 +1,12 @@
+[
+    {
+        "message": "Welcome to Sleep Outside!",
+        "background": "darkgreen",
+        "color": "white"
+    },
+    {
+        "message": "Free shipping on orders over $50",
+        "background": "orange",
+        "color": "black"
+    }
+]

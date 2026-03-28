@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "cse340",
   "version": "1.0.0",
   "description": "",
@@ -13,5 +14,18 @@
   "dependencies": {
     "ejs": "^5.0.1",
     "express": "^5.2.1"
+=======
+  "name": "wdd330",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.0.1"
+>>>>>>> 5b89617c0a68c239d9be74655b2ed13e4041ead5
   }
 }
