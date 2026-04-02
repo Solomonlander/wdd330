@@ -1,43 +1,40 @@
-export default class ProductList {
+import ProductData from "./ProductData.js";
+import ProductList from "./ProductList.js";
+import {
+    loadHeaderFooter,
+    getParam
+} from "./utils.mjs";
 
-    constructor(category, dataSource, element) {
-        this.category = category;
-        this.dataSource = dataSource;
-        this.element = element;
-    }
+loadHeaderFooter();
 
-    async init() {
+const category = getParam("category");
 
-        const list =
-            await this.dataSource.getData(
-                this.category
-            );
+const title = document.querySelector(".title");
+title.textContent = "Top Products: " + category;
 
-        this.render(list);
-    }
+const dataSource = new ProductData();
 
-    render(list) {
+const listElement = document.querySelector(".product-list");
 
-        this.element.innerHTML =
-            list.map(product =>
+const myList = new ProductList(
+    category,
+    dataSource,
+    listElement
+);
 
-                `<li>
+myList.init();
 
-          <a href="../product_details/index.html?id=${product.Id}">
 
-            <h3>${product.Name}</h3>
+// ✅ SEARCH FUNCTIONALITY (ADDED)
+const searchInput = document.querySelector("#search");
 
-            <img
-              src="${product.Images.PrimaryMedium}"
-              alt="${product.Name}"
-            />
+searchInput.addEventListener("input", () => {
+    const value = searchInput.value.toLowerCase();
 
-          </a>
+    const products = document.querySelectorAll(".product-list li");
 
-        </li>`
-
-            ).join("");
-
-    }
-
-}
+    products.forEach(product => {
+        const text = product.textContent.toLowerCase();
+        product.style.display = text.includes(value) ? "" : "none";
+    });
+});
