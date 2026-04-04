@@ -1,40 +1,23 @@
-import ProductData from "./ProductData.js";
-import ProductList from "./ProductList.js";
-import {
-    loadHeaderFooter,
-    getParam
-} from "./utils.mjs";
+export default class ProductList {
+    constructor(category, dataSource, element) {
+        this.category = category;
+        this.dataSource = dataSource;
+        this.element = element;
+    }
 
-loadHeaderFooter();
+    async init() {
+        const list = await this.dataSource.getData(this.category);
+        this.render(list);
+    }
 
-const category = getParam("category");
-
-const title = document.querySelector(".title");
-title.textContent = "Top Products: " + category;
-
-const dataSource = new ProductData();
-
-const listElement = document.querySelector(".product-list");
-
-const myList = new ProductList(
-    category,
-    dataSource,
-    listElement
-);
-
-myList.init();
-
-
-// ✅ SEARCH FUNCTIONALITY (ADDED)
-const searchInput = document.querySelector("#search");
-
-searchInput.addEventListener("input", () => {
-    const value = searchInput.value.toLowerCase();
-
-    const products = document.querySelectorAll(".product-list li");
-
-    products.forEach(product => {
-        const text = product.textContent.toLowerCase();
-        product.style.display = text.includes(value) ? "" : "none";
-    });
-});
+    render(list) {
+        this.element.innerHTML = list.map(product => `
+            <li>
+                <a href="../product_details/index.html?id=${product.Id}">
+                    <h3>${product.Name}</h3>
+                    <img src="${product.Images.PrimaryMedium}" alt="${product.Name}" />
+                </a>
+            </li>
+        `).join("");
+    }
+}
