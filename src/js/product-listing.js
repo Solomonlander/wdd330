@@ -24,7 +24,7 @@ const myList = new ProductList(
 
 myList.init();
 
-// ✅ SEARCH FEATURE (correct place)
+// ✅ SEARCH FEATURE
 const searchInput = document.querySelector("#search");
 
 searchInput.addEventListener("input", () => {
